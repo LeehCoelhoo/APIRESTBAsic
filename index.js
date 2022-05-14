@@ -14,9 +14,14 @@ const app = express(); // permite a criação das sub urls
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
-
+//adicionar usuario
 const userController = require ('./controllers/UserController');
 app.post('/user', userController.store);
+//lista user
+app.get('/user', userController.show);
+//lista user filtrando por email
+//https://apirestbasic.leehcoelhoo.repl.co/user/busca/?email=leticia@gmail.com
+app.get('/user/busca/*', userController.index);
 
 app.get('/usercontroller',testController.show);
 
