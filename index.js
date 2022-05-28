@@ -24,7 +24,12 @@ app.get('/user', userController.show);
 app.get('/user/busca/*', userController.index);
 
 app.get('/usercontroller',testController.show);
+// excluir user
+//req.params = route params (post, put, delete)
+app.delete('/user/:id', userController.destroy);
 
+//alterar user
+app.put('/user/:id', userController.update);
 
 
 app.get('/', (req, res) => {
@@ -57,7 +62,7 @@ app.get('/users', (req, res) => {
 	res.json(users);
 });
 
-app.post('/api/echobody', (req,res) => {
+app.post('/api/echobody', ( req,res) => {
   res.send(req.body);
 });
 
